@@ -1,0 +1,10 @@
+#divLogoIndex{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#logoIndex{
+    width: 400px;
+
+}

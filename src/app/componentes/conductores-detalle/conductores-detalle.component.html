@@ -1,0 +1,27 @@
+
+<h4>Gestión de Conductor</h4>
+
+<form>
+    <div class="mb-3">
+    <label for="apellido" class="form-label">Apellido</label>
+    <input type="text" class="form-control" id="apellido" [value]="conductor?.apellido">
+    </div>
+
+    <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" [value]="conductor?.nombre">
+    </div>
+
+    <div class="mb-3">
+    <label for="registro" class="form-label">Nº de Registro</label>
+    <input type="text" class="form-control" id="registro" [value]="conductor?.numeroRegistro">
+    </div>
+
+    <div class="mb-3">
+    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+    <input type="date" class="form-control" id="fechaNacimiento" [value]="conductor?.fechaNacimiento">
+    </div>
+
+    <a href="conductoresGestion.html" class="btn btn-success">Guardar cambios</a>
+</form>
+

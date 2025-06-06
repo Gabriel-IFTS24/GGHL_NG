@@ -1,0 +1,30 @@
+
+<h4>Reporte de Conductores</h4>
+
+<form id="filtroForm" class="mb-4">
+
+  <div class="row g-3 mb-3">
+    <div class="col-md-4">
+      <label for="fechaDesde" class="form-label">Fecha de nacimiento desde</label>
+      <input type="date" class="form-control" id="fechaDesde" name="fechaDesde" />
+    </div>
+    <div class="col-md-4">
+      <label for="fechaHasta" class="form-label">Fecha de nacimiento hasta</label>
+      <input type="date" class="form-control" id="fechaHasta" name="fechaHasta" />
+    </div>
+  </div>
+
+  <div class="row g-3 mb-3">
+    <div class="col-md-4">
+      <label for="registroDesde" class="form-label">Nº de Registro desde</label>
+      <input type="text" class="form-control" id="registroDesde" name="registroDesde" placeholder="Ej: 00123456" />
+    </div>
+    <div class="col-md-4">
+      <label for="registroHasta" class="form-label">Nº de Registro hasta</label>
+      <input type="text" class="form-control" id="registroHasta" name="registroHasta" placeholder="Ej: 00123460" />
+    </div>
+  </div>
+  <div class="col-12">
+    <a href="ReporteConductores.xlsx" class="btn btn-primary">Generar reporte</a>
+  </div>
+</form>

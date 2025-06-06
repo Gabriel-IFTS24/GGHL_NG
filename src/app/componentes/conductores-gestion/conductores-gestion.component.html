@@ -1,0 +1,35 @@
+<h4>Gestión de Conductores</h4>
+
+<table class="table table-striped table-hover">
+
+  <!-- Encabezado de la tabla -->
+  <thead class="thead-light table-primary">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">DNI</th>
+      <th scope="col">Nº de Registro</th>
+      <th scope="col">Fecha de Nacimiento</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <!-- Dejo el elemento que se llena con el script -->
+  <tbody id="tbody">
+    @for (conductor of conductores; track conductor.id){
+        <tr>
+            <th scope="row">{{ conductor.id }}</th>
+            <td>{{ conductor.apellido }} </td>
+            <td>{{ conductor.nombre }} </td>
+            <td>{{ conductor.DNI }} </td>
+            <td>{{ conductor.numeroRegistro }} </td>
+            <td>{{ conductor.fechaNacimiento }} </td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/conductores-detalle',conductor.id]">Modificar</button>
+                <button class="btn btn-danger btn-sm">Eliminar</button>
+            </td>
+        </tr>
+    }
+  </tbody>
+</table>

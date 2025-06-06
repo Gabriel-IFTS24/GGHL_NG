@@ -1,0 +1,16 @@
+* {
+    font-family: 'Arial','Roboto', 'Monserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+nav{
+    background-color: rgb(20, 113, 170);
+}
+
+.nav-link, .navbar-brand{
+    color: white;
+}
+
+.content{
+    margin: 10px;
+}
