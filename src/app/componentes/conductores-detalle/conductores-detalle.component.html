@@ -1,32 +1,31 @@
 
 <h4>Gestión de Conductor</h4>
 
-<!-- <form [formGroup="conductorForm"]> -->
-<form>
-    <div class="mb-3">
-    <label for="apellido" class="form-label">Apellido</label>
-    <input type="text" class="form-control" id="apellido" [value]="conductor?.apellido">
-    <!-- <input type="text" class="form-control" id="apellido" formControlname="apellido"> -->
-    </div>
-
+<form [formGroup]="conductorForm">
     <div class="mb-3">
     <label for="nombre" class="form-label">Nombre</label>
-    <input type="text" class="form-control" id="nombre" [value]="conductor?.nombre">
-    <!-- <input type="text" class="form-control" id="nombre" formControlname="nombre"> -->
+    <!-- <input type="text" class="form-control" id="nombre" [value]="conductor?.nombre"> -->
+    <input type="text" class="form-control" id="nombre" formControlName="nombre">
+    </div>
+    
+    <div class="mb-3">
+    <label for="apellido" class="form-label">Apellido</label>
+    <!-- <input type="text" class="form-control" id="apellido" [value]="conductor?.apellido"> -->
+    <input type="text" class="form-control" id="apellido" formControlName="apellido">
     </div>
 
     <div class="mb-3">
     <label for="registro" class="form-label">Nº de Registro</label>
-    <input type="text" class="form-control" id="registro" [value]="conductor?.numeroRegistro">
-    <!-- <input type="text" class="form-control" id="numeroRegistro" formControlname="numeroRegistro"> -->
+    <!-- <input type="text" class="form-control" id="registro" [value]="conductor?.numeroRegistro"> -->
+    <input type="text" class="form-control" id="numeroRegistro" formControlName="numeroRegistro">
     </div>
 
     <div class="mb-3">
     <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-    <input type="date" class="form-control" id="fechaNacimiento" [value]="conductor?.fechaNacimiento">
-    <!-- <input type="text" class="form-control" id="fechaNacimiento" formControlname="fechaNacimiento"> -->
+    <!-- <input type="date" class="form-control" id="fechaNacimiento" [value]="conductor?.fechaNacimiento"> -->
+    <input type="text" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento">
     </div>
 
-    <a href="conductoresGestion.html" class="btn btn-success">Guardar cambios</a>
+    <button class="btn btn-success" (click)="guardarConductor()" [disabled]="!conductorForm.valid" >Guardar conductor</button>
 </form>
 

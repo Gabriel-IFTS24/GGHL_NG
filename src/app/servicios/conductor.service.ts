@@ -46,13 +46,18 @@ export class ConductorService {
   ] : JSON.parse(localStorageConductores);
   }
 
-  public agregarConductor(conductor: Conductor): void{
+  public guardarConductor(conductor: Conductor): void {
     let conductores = this.obtenerConductores();
-
-    conductor.id = this.nuevoId++;
-    
-    conductores.push(conductor);
-
+  
+    if (conductor.id != null && conductores.some(c => c.id === conductor.id)) {
+      // Ya existe: actualizar
+      conductores = conductores.map(c => c.id === conductor.id ? conductor : c);
+    } else {
+      // No existe: asignar nuevo ID y agregar
+      conductor.id = this.nuevoId++;
+      conductores.push(conductor);
+    }
+  
     this.guardarConductores(conductores);
   }
   

@@ -10,7 +10,7 @@ import { ConductorService } from '../../servicios/conductor.service';
   styleUrl: './conductores-alta.component.css'
 })
 export class ConductoresAltaComponent {
-  public nameFilter = new FormControl('');
+  // public nameFilter = new FormControl('');
 
   public conductorForm = new FormGroup({
     apellido: new FormControl(''),
@@ -31,13 +31,8 @@ export class ConductoresAltaComponent {
     fechaNacimiento: this.conductorForm.value.fechaNacimiento ?? '',
     };
 
-    console.log('Apellido:', this.conductorForm.value.apellido)
-    console.log('Nuevo conductor:', nuevoConductor);
-    this.conductorService.agregarConductor(nuevoConductor);
-
+    this.conductorService.guardarConductor(nuevoConductor);
     this.conductorForm.reset();
-
     
   };
-
 }
