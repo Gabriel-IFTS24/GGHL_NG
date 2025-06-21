@@ -1,6 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, Input } from '@angular/core';
 import { Conductor, listaConductores } from '../../modelos/conductor';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-conductores-detalle',
@@ -10,13 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ConductoresDetalleComponent  implements OnInit{
   conductor?: Conductor
-  listadoDeConductores = listaConductores;
+  @Input() public id?: number // Con el withComponentInputBinding no hay que hacer todo el lío para subscribir y obtener el param
   
-  private _route = inject(ActivatedRoute)
-
   ngOnInit(): void {
-    this._route.params.subscribe((params) => {
-      this.conductor = listaConductores.find(conductor => conductor.id == params['id'])
-    })
+    this.conductor = listaConductores.find(conductor => conductor.id == this.id);
   }
 }

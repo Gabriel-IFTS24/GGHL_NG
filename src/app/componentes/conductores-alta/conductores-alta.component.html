@@ -1,33 +1,30 @@
 
 <h4>Alta de Conductores</h4>
 
-
-<!-- Formulario para el alta -->
-<form>
+<form [formGroup]="conductorForm">
   <div class="form-row">
     <div class="form-group mb-3">
       <label for="nombre">Nombre:</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Ingrese nombre del conductor">
+      <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre" placeholder="Ingrese nombre del conductor">
     </div>
     <div class="form-group mb-3">
       <label for="apellido">Apellido:</label>
-      <input type="text" class="form-control" id="apellido" name="apellido" required placeholder="Ingrese apellido del conductor">
+      <input type="text" class="form-control" id="apellido" name="apellido" formControlName="apellido" placeholder="Ingrese apellido del conductor">
     </div>
   </div>
   <div class="form-group mb-3">
     <label for="registro">DNI:</label>
-    <input type="text" class="form-control" id="DNI" name="DNI" required placeholder="Ingrese número de documento">
+    <input type="text" class="form-control" id="DNI" name="DNI" formControlName="DNI" placeholder="Ingrese número de documento">
   </div>
   <div class="form-group mb-3">
     <label for="registro">Número de Registro:</label>
-    <input type="text" class="form-control" id="registro" name="registro" required placeholder="Ingrese número de registro">
+    <input type="text" class="form-control" id="registro" name="registro" formControlName="numeroRegistro" placeholder="Ingrese número de registro">
   </div>
   <div class="form-group mb-3">
     <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+    <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" >
   </div>
 
-  <!-- Botón que llama a la función del js que guarda el conductor -->
-  <button class="btn btn-success" onclick="agregarConductor(event)">Guardar conductor</button>
+  <button class="btn btn-success" (click)="agregarConductor()" [disabled]="!conductorForm.valid" >Guardar conductor</button>
 </form>
 
