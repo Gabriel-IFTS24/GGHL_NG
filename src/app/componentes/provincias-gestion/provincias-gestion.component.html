@@ -1,0 +1,31 @@
+<h4>Provincias</h4>
+
+@if (errorApi) {<div class="alert alert-danger"> Error al obtener las provincias: </div>
+  <div class="alert alert-danger"> {{ errorApi }} </div>}
+@else {
+<table class="table table-striped table-hover">
+
+  <!-- Encabezado de la tabla -->
+  <thead class="thead-light table-primary">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <!-- <th scope="col"></th> -->
+    </tr>
+  </thead>
+
+  <!-- Dejo el elemento que se llena con el script -->
+  <tbody id="tbody">
+    @for (provincia of provincias; track provincia.id){
+        <tr>
+            <th scope="row">{{ provincia.id }}</th>
+            <td>{{ provincia.nombre }} </td>
+            <!-- <td>
+                <button type="button" class="btn btn-primary btn-sm">Modificar</button>
+                <button class="btn btn-danger btn-sm ms-2">Eliminar</button>
+            </td> -->
+        </tr>
+    }
+  </tbody>
+</table>
+}

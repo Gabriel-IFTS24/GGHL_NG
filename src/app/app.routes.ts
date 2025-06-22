@@ -4,6 +4,7 @@ import { ConductoresAltaComponent } from './componentes/conductores-alta/conduct
 import { ConductoresGestionComponent } from './componentes/conductores-gestion/conductores-gestion.component';
 import { ConductoresReportesComponent } from './componentes/conductores-reportes/conductores-reportes.component';
 import { ConductoresDetalleComponent } from './componentes/conductores-detalle/conductores-detalle.component';
+import { ProvinciasGestionComponent } from './componentes/provincias-gestion/provincias-gestion.component';
 
 export const routes: Routes = [
     {path:'', loadComponent: () => import('./componentes/home/home.component').then(m => HomeComponent)},
@@ -11,5 +12,6 @@ export const routes: Routes = [
     {path:'conductores-gestion', loadComponent: () => import('./componentes/conductores-gestion/conductores-gestion.component').then(m => ConductoresGestionComponent)},
     {path: 'conductores-detalle/:id', loadComponent: () => import('./componentes/conductores-detalle/conductores-detalle.component').then(m => ConductoresDetalleComponent)},
     {path:'conductores-reportes', loadComponent: () => import('./componentes/conductores-reportes/conductores-reportes.component').then(m => ConductoresReportesComponent)},
+    {path:'provincias-gestion', loadComponent: () => import('./componentes/provincias-gestion/provincias-gestion.component').then(m => ProvinciasGestionComponent)},
     {path:'**', redirectTo:''},
 ];
