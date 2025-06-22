@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './colectivos-alta.component.html',
-  styleUrl: './colectivos-alta.component.css'
+  styleUrl: './colectivos-alta.component.css',
 })
 export class ColectivosAltaComponent implements OnInit {
   public colectivoForm = new FormGroup({
@@ -40,7 +40,7 @@ export class ColectivosAltaComponent implements OnInit {
      
       this.colectivoService.guardarColectivo(nuevoColectivo); 
 
-      console.log('Colectivo agregado con éxito (en localStorage):', nuevoColectivo);
+      console.log('Colectivo agregado con éxito:', nuevoColectivo);
       alert('Colectivo agregado con éxito!'); 
       this.colectivoForm.reset(); 
       
