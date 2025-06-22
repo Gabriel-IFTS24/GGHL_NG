@@ -6,6 +6,7 @@ import { ConductoresReportesComponent } from './componentes/conductores-reportes
 import { ConductoresDetalleComponent } from './componentes/conductores-detalle/conductores-detalle.component';
 import { ProvinciasGestionComponent } from './componentes/provincias-gestion/provincias-gestion.component';
 import { RutasAltaComponent } from './componentes/rutas-alta/rutas-alta.component';
+import { RutasGestionComponent } from './componentes/rutas-gestion/rutas-gestion.component';
 
 export const routes: Routes = [
     {path:'', loadComponent: () => import('./componentes/home/home.component').then(m => HomeComponent)},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path:'conductores-reportes', loadComponent: () => import('./componentes/conductores-reportes/conductores-reportes.component').then(m => ConductoresReportesComponent)},
     {path:'provincias-gestion', loadComponent: () => import('./componentes/provincias-gestion/provincias-gestion.component').then(m => ProvinciasGestionComponent)},
     {path:'rutas-alta', loadComponent: () => import('./componentes/rutas-alta/rutas-alta.component').then(m => RutasAltaComponent)},
+    {path:'rutas-gestion', loadComponent: () => import('./componentes/rutas-gestion/rutas-gestion.component').then(m => RutasGestionComponent)},
     {path:'**', redirectTo:''},
 ];

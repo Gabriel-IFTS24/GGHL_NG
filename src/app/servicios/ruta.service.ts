@@ -12,8 +12,32 @@ export class RutaService {
   constructor() { 
     this.rutas = this.obtenerRutas() || []
 
+    this.guardarTodasLasRutas(this.rutas)
+
+    this.inicializarNuevoId()
+    // if( this.rutas.length === 0){
+    //   this.nuevoId = 1;
+    // }else{
+    //   const ultimaRuta = this.rutas[this.rutas.length - 1];
+      
+    //   if(ultimaRuta && ultimaRuta.id !== undefined) {
+    //     this.nuevoId = ultimaRuta.id + 1;
+    //     console.log("nueva ruta", ultimaRuta)
+    //   } else {
+    //     this.nuevoId = 1;
+    //   }
+    // }
 
   }
+  private inicializarNuevoId(): void{
+    const rutasExistentes = this.obtenerRutas();
+    if(rutasExistentes.length > 0){
+      this.nuevoId = Math.max(...rutasExistentes.map(r => r.id || 0)) + 1;
+    } else{
+      this.nuevoId = 1;
+    }
+  }
+
   public obtenerRutas(): Ruta[] {
     let localStorageRutas = localStorage.getItem('rutas');
 
@@ -28,8 +52,9 @@ export class RutaService {
 
   public guardarRuta( ruta: Ruta): void {
     let rutas = this.obtenerRutas();
-
+    
     if (ruta.id != null && rutas.some( r => r.id === ruta.id)){
+      console.log('existe')
       // Ya existe: actualizar
       rutas = rutas.map(r => r.id === ruta.id ? ruta : r);
     }else{
