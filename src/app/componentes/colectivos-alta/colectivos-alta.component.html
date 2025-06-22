@@ -1,0 +1,38 @@
+<h4>Alta de Colectivos</h4>
+
+<form [formGroup]="colectivoForm" (ngSubmit)="agregarColectivo()">
+  <div class="form-row">
+    <div class="form-group mb-3">
+      <label for="patente">Patente:</label>
+      <input type="text" class="form-control" id="patente" name="patente" formControlName="patente" placeholder="Ej: ABC 123">
+      <div *ngIf="colectivoForm.get('patente')?.invalid && (colectivoForm.get('patente')?.dirty || colectivoForm.get('patente')?.touched)" class="text-danger">
+        <div *ngIf="colectivoForm.get('patente')?.errors?.['required']">La patente es requerida.</div>
+      </div>
+    </div>
+    <div class="form-group mb-3">
+      <label for="modelo">Modelo:</label>
+      <input type="text" class="form-control" id="modelo" name="modelo" formControlName="modelo" placeholder="Ej: Mercedes Benz Citaro">
+      <div *ngIf="colectivoForm.get('modelo')?.invalid && (colectivoForm.get('modelo')?.dirty || colectivoForm.get('modelo')?.touched)" class="text-danger">
+        <div *ngIf="colectivoForm.get('modelo')?.errors?.['required']">El modelo es requerido.</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group mb-3">
+    <label for="anioFabricacion">Año de Fabricación:</label>
+    <input type="number" class="form-control" id="anioFabricacion" name="anioFabricacion" formControlName="anioFabricacion" placeholder="Ej: 2020">
+    <div *ngIf="colectivoForm.get('anioFabricacion')?.invalid && (colectivoForm.get('anioFabricacion')?.dirty || colectivoForm.get('anioFabricacion')?.touched)" class="text-danger">
+      <div *ngIf="colectivoForm.get('anioFabricacion')?.errors?.['required']">El año de fabricación es requerido.</div>
+      <div *ngIf="colectivoForm.get('anioFabricacion')?.errors?.['min'] || colectivoForm.get('anioFabricacion')?.errors?.['max']">El año debe ser un valor válido (ej: 1950-{{ currentYear }}).</div>
+    </div>
+  </div>
+  <div class="form-group mb-3">
+    <label for="capacidadPasajeros">Capacidad de Pasajeros:</label>
+    <input type="number" class="form-control" id="capacidadPasajeros" name="capacidadPasajeros" formControlName="capacidadPasajeros" placeholder="Ej: 50">
+    <div *ngIf="colectivoForm.get('capacidadPasajeros')?.invalid && (colectivoForm.get('capacidadPasajeros')?.dirty || colectivoForm.get('capacidadPasajeros')?.touched)" class="text-danger">
+      <div *ngIf="colectivoForm.get('capacidadPasajeros')?.errors?.['required']">La capacidad es requerida.</div>
+      <div *ngIf="colectivoForm.get('capacidadPasajeros')?.errors?.['min']">La capacidad mínima es de 1 pasajero.</div>
+    </div>
+  </div>
+
+  <button class="btn btn-success" type="submit" [disabled]="!colectivoForm.valid">Guardar Colectivo</button>
+</form>
