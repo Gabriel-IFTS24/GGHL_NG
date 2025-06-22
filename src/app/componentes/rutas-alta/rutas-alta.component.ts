@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms'
 import { Ruta } from '../../modelos/ruta';
 import { RutaService } from '../../servicios/ruta.service';
 
+// Esto hay que cambiarlo a colectivos
+import { ConductorService } from '../../servicios/conductor.service';
+import { Conductor } from '../../modelos/conductor';
+
 @Component({
   selector: 'app-rutas-alta',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './rutas-alta.component.html',
   styleUrl: './rutas-alta.component.css'
 })
-export class RutasAltaComponent {
+export class RutasAltaComponent implements OnInit{
 
   lista = [
     'Buenos Aires (CABA)',
@@ -52,7 +57,23 @@ export class RutasAltaComponent {
     distanciaKm: new FormControl(0, [Validators.required, Validators.min(1)]),
   })
 
-  constructor(private rutaService: RutaService){ }
+  // Esto hay que cambiarlo a colectivos
+  constructor(private rutaService: RutaService,  private conductorService: ConductorService){ }
+
+  // Esto hay que cambiarlo a colectivos
+  conductores: Conductor[] = [];
+  conductorSeleccionado: string = '';
+
+  // Esto hay que cambiarlo a colectivos
+  ngOnInit(): void {
+    this.conductores = this.conductorService.obtenerConductores();
+  }
+
+    // Esto hay que cambiarlo a colectivos
+    seleccionarConductor(event: Event): void {
+      const selectElement = event.target as HTMLSelectElement;
+      this.conductorSeleccionado = selectElement.value;
+    }
 
   agregarRuta(): void {
     if(this.rutaForm.valid){

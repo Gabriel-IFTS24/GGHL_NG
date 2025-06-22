@@ -36,6 +36,17 @@
         <input type="text" class="form-control" id="distanciaKm" name="distanciaKm" formControlName="distanciaKm">
     </div>
 
+
+    <div>
+        <label for="conductor">Conductor:</label>
+        <select id="conductor" (change)="seleccionarConductor($event)">
+          <option value="" disabled selected>Seleccione un conductor</option>
+          <option *ngFor="let conductor of conductores" [value]="conductor.apellido + ' ' + conductor.nombre">
+            {{ conductor.apellido }}, {{ conductor.nombre }}
+          </option>
+        </select>
+      </div>
+
     <button class="btn btn-success" (click)="agregarRuta()" [disabled]="!rutaForm.valid" >Guardar Ruta</button>
 </div>
 
