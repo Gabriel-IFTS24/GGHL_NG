@@ -5,6 +5,11 @@ import { ConductoresGestionComponent } from './componentes/conductores-gestion/c
 import { ConductoresReportesComponent } from './componentes/conductores-reportes/conductores-reportes.component';
 import { ConductoresDetalleComponent } from './componentes/conductores-detalle/conductores-detalle.component';
 import { ProvinciasGestionComponent } from './componentes/provincias-gestion/provincias-gestion.component';
+// Agrego colectivos (Lu)
+import { ColectivosAltaComponent } from './componentes/colectivos-alta/colectivos-alta.component';
+import { ColectivosGestionComponent } from './componentes/colectivos-gestion/colectivos-gestion.component';
+import { ColectivosReporteComponent } from './componentes/colectivos-reporte/colectivos-reporte.component';
+
 
 export const routes: Routes = [
     {path:'', loadComponent: () => import('./componentes/home/home.component').then(m => HomeComponent)},
@@ -13,5 +18,11 @@ export const routes: Routes = [
     {path: 'conductores-detalle/:id', loadComponent: () => import('./componentes/conductores-detalle/conductores-detalle.component').then(m => ConductoresDetalleComponent)},
     {path:'conductores-reportes', loadComponent: () => import('./componentes/conductores-reportes/conductores-reportes.component').then(m => ConductoresReportesComponent)},
     {path:'provincias-gestion', loadComponent: () => import('./componentes/provincias-gestion/provincias-gestion.component').then(m => ProvinciasGestionComponent)},
+    // Rutas de colectivos (Lu)
+    {path:'colectivos-alta', loadComponent: () => import('./componentes/colectivos-alta/colectivos-alta.component').then(m => ColectivosAltaComponent)},
+    {path:'colectivos-gestion', loadComponent: () => import('./componentes/colectivos-gestion/colectivos-gestion.component').then(m => ColectivosGestionComponent)},
+    {path:'colectivos-reporte', loadComponent: () => import('./componentes/colectivos-reporte/colectivos-reporte.component').then(m => ColectivosReporteComponent)},
+    
     {path:'**', redirectTo:''},
 ];
+
