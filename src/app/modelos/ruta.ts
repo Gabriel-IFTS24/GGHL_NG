@@ -1,5 +1,5 @@
 export class Ruta {
-    id?: string;
+    id?: number;
     nombre?: string;
     origen?: string;
     destino?: string;
