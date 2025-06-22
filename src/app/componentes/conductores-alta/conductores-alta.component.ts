@@ -10,7 +10,6 @@ import { ConductorService } from '../../servicios/conductor.service';
   styleUrl: './conductores-alta.component.css'
 })
 export class ConductoresAltaComponent {
-  // public nameFilter = new FormControl('');
 
   public conductorForm = new FormGroup({
     apellido: new FormControl(''),
@@ -24,6 +23,7 @@ export class ConductoresAltaComponent {
 
   agregarConductor(){
     const nuevoConductor: Conductor ={
+    id: 0,
     apellido: this.conductorForm.value.apellido ?? '',
     nombre: this.conductorForm.value.nombre ?? '',
     DNI: this.conductorForm.value.DNI ?? 0,

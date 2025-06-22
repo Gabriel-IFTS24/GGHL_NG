@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, MaxLengthValidator, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Conductor, listaConductores } from '../../modelos/conductor';
+import { Conductor } from '../../modelos/conductor';
 import { ConductorService } from '../../servicios/conductor.service';
 import { Router } from '@angular/router';
 
@@ -23,7 +23,7 @@ export class ConductoresDetalleComponent  implements OnInit{
 
   guardarConductor(){
     const conductorModificado: Conductor ={
-    id: this.conductor?.id,
+    id: this.conductor?.id ?? 0,
     apellido: this.conductorForm.value.apellido ?? '',
     nombre: this.conductorForm.value.nombre ?? '',
     DNI: this.conductorForm.value.DNI ?? 0,
@@ -38,7 +38,7 @@ export class ConductoresDetalleComponent  implements OnInit{
   };
   
   ngOnInit(): void {
-    this.conductor = listaConductores.find(conductor => conductor.id == this.id);
+    this.conductor = this.conductorService.obtenerConductores().find(conductor => conductor.id == this.id);
     
     this.conductorForm = new FormGroup({
       id: new FormControl(this.conductor?.id),

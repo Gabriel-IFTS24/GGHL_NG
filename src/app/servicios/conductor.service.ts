@@ -26,8 +26,6 @@ export class ConductorService {
     }
     
   }
-  
-  
 
   public obtenerConductores(): Conductor[] {
     let localStorageConductores = localStorage.getItem('conductores');
@@ -55,6 +53,8 @@ export class ConductorService {
     } else {
       // No existe: asignar nuevo ID y agregar
       conductor.id = this.nuevoId++;
+      console.log("conductor.id: ", conductor.id);
+      console.log("this.nuevoId++: ", this.nuevoId++);
       conductores.push(conductor);
     }
   
