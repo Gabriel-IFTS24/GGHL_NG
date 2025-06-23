@@ -19,5 +19,11 @@ export class ConductoresGestionComponent {
     // Llamo a la función 'obtenerConductores' del servicio
     this.conductores = this.conductorService.obtenerConductores();
   }
-  
+
+    borrarConductor(id: number): void {
+    if (confirm(`¿Está seguro que desea eliminar el conductor ${id}?`)) {
+      this.conductorService.borrarConductor(id);
+      this.conductores = this.conductorService.obtenerConductores();
+      }
+    }
 }

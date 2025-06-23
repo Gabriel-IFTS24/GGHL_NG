@@ -27,7 +27,7 @@
             <td>{{ colectivo.capacidadPasajeros }} </td>
             <td>
                 <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/colectivos-detalle',colectivo.id]">Modificar</button>
-                <button class="btn btn-danger btn-sm ms-2">Eliminar</button>
+                <button class="btn btn-danger btn-sm ms-2" (click)="borrarColectivo(colectivo.id)">Eliminar</button>
             </td>
         </tr>
     }

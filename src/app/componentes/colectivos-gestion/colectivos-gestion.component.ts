@@ -20,4 +20,11 @@ export class ColectivosGestionComponent {
     // Llamo a la función 'obtenerConductores' del servicio
     this.colectivos = this.ColectivoService.obtenerColectivos();
   }
+
+  borrarColectivo(id: number): void {
+    if (confirm(`¿Está seguro que desea eliminar el colectivo ${id}?`)) {
+      this.ColectivoService.borrarColectivo(id);
+      this.colectivos = this.ColectivoService.obtenerColectivos();
+      }
+    }
 }
