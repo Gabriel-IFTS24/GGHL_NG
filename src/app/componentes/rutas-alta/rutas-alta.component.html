@@ -16,16 +16,18 @@
         </select>
     </div> -->
     <div class="form-group mb-3">
-        <label for="origen">Ciudad de Origen</label>
-        <select name="" id="origen" formControlName="origen">
+        <label for="origen">Ciudad de Origen:</label>
+        <select name="origen" id="origen" formControlName="origen">
+            <option value="" disabled selected>Seleccione una ciudad</option>
             @for (item of lista; track $index) {
                 <option [value]="item">{{ item }} </option>
             }
         </select>
     </div>
     <div class="form-group mb-3">
-        <label for="destino">Ciudad Destino</label>
+        <label for="destino">Ciudad Destino:</label>
         <select name="" id="destino" formControlName="destino">
+            <option value="" disabled selected>Seleccione una ciudad</option>
             @for (item of lista; track $index) {
                 <option [value]="item">{{ item }} </option>
             }
@@ -33,19 +35,20 @@
     </div>
     <div class="form-group mb-3">
         <label for="distanciaKm">Km totales:</label>
-        <input type="text" class="form-control" id="distanciaKm" name="distanciaKm" formControlName="distanciaKm">
+        <input type="number" class="form-control" id="distanciaKm" name="distanciaKm" formControlName="distanciaKm">
     </div>
 
 
-    <div>
+    <div class="form-group mb-3">
         <label for="conductor">Conductor:</label>
         <select id="conductor" (change)="seleccionarConductor($event)">
-          <option value="" disabled selected>Seleccione un conductor</option>
-          <option *ngFor="let conductor of conductores" [value]="conductor.apellido + ' ' + conductor.nombre">
-            {{ conductor.apellido }}, {{ conductor.nombre }}
-          </option>
+            <option value="" disabled selected>Seleccione un conductor</option>
+            @for (conductor of conductores; track $index) {
+                <option [value]="conductor.apellido + ' ' + conductor.nombre">{{ conductor.apellido }}, {{ conductor.nombre }}</option>
+            }
+        
         </select>
-      </div>
+    </div>
 
     <button class="btn btn-success" (click)="agregarRuta()" [disabled]="!rutaForm.valid" >Guardar Ruta</button>
 </div>
