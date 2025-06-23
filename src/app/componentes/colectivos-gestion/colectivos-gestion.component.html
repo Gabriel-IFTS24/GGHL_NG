@@ -1,1 +1,33 @@
-<p>colectivos-gestion works!</p>
+<h4>Gestión de Colectivos</h4>
+
+<table class="table table-striped table-hover">
+
+  <!-- Encabezado de la tabla -->
+  <thead class="thead-light table-primary">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Patente</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Año de fabricacion</th>
+      <th scope="col">Capacidad de pasajeros</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+    <!-- Cuerpo de la tabla -->
+  <tbody id="tbody">
+    @for (colectivo of colectivos; track colectivo.id){
+        <tr>
+            <th scope="row">{{ colectivo.id }}</th>
+            <td>{{ colectivo.patente }} </td>
+            <td>{{ colectivo.modelo }} </td>
+            <td>{{ colectivo.anioFabricacion }} </td>
+            <td>{{ colectivo.capacidadPasajeros }} </td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/colectivos-detalle',colectivo.id]">Modificar</button>
+                <button class="btn btn-danger btn-sm ms-2">Eliminar</button>
+            </td>
+        </tr>
+    }
+  </tbody>
+</table>

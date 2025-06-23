@@ -12,11 +12,11 @@ export class ConductoresGestionComponent {
   
   conductores: any[] = [];
 
-  // Inyectamos el servicio en el constructor
+  // Inyecto el servicio en el constructor
   constructor(private conductorService: ConductorService) { }
 
   ngOnInit(): void {
-    // Llamamos a la función 'obtenerConductores' del servicio
+    // Llamo a la función 'obtenerConductores' del servicio
     this.conductores = this.conductorService.obtenerConductores();
   }
   

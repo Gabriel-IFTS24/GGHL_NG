@@ -9,6 +9,7 @@ import { ProvinciasGestionComponent } from './componentes/provincias-gestion/pro
 import { ColectivosAltaComponent } from './componentes/colectivos-alta/colectivos-alta.component';
 import { ColectivosGestionComponent } from './componentes/colectivos-gestion/colectivos-gestion.component';
 import { ColectivosReporteComponent } from './componentes/colectivos-reporte/colectivos-reporte.component';
+import { ColectivosDetalleComponent } from './componentes/colectivos-detalle/colectivos-detalle.component';
 
 
 export const routes: Routes = [
@@ -21,7 +22,9 @@ export const routes: Routes = [
     // Rutas de colectivos (Lu)
     {path:'colectivos-alta', loadComponent: () => import('./componentes/colectivos-alta/colectivos-alta.component').then(m => ColectivosAltaComponent)},
     {path:'colectivos-gestion', loadComponent: () => import('./componentes/colectivos-gestion/colectivos-gestion.component').then(m => ColectivosGestionComponent)},
+    {path:'colectivos-detalle/:id', loadComponent: () => import('./componentes/colectivos-detalle/colectivos-detalle.component').then(m => ColectivosDetalleComponent)},
     {path:'colectivos-reporte', loadComponent: () => import('./componentes/colectivos-reporte/colectivos-reporte.component').then(m => ColectivosReporteComponent)},
+
     
     {path:'**', redirectTo:''},
 ];

@@ -1,0 +1,26 @@
+<h4>Gestión de Colectivo</h4>
+
+<form [formGroup]="colectivoForm">
+    <div class="mb-3">
+    <label for="patente" class="form-label">Patente</label>
+    <input type="text" class="form-control" id="patente" formControlName="patente">
+    </div>
+    
+    <div class="mb-3">
+    <label for="modelo" class="form-label">Modelo</label>
+    <input type="text" class="form-control" id="modelo" formControlName="modelo">
+    </div>
+
+    <div class="mb-3">
+    <label for="anioFabricacion" class="form-label">Año de fabricación</label>
+    <input type="number" class="form-control" id="anioFabricacion" formControlName="anioFabricacion">
+    </div>
+
+    <div class="mb-3">
+    <label for="capacidadPasajeros" class="form-label">Capacidad de pasajeros</label>
+    <input type="number" class="form-control" id="capacidadPasajeros" formControlName="capacidadPasajeros">
+    </div>
+
+    <button class="btn btn-success" (click)="guardarColectivo()" [disabled]="!colectivoForm.valid" >Guardar conductor</button>
+</form>
+
