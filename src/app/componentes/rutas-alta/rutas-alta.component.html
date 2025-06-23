@@ -1,0 +1,53 @@
+<h4>Alta de Rutas</h4>
+
+<form [formGroup]="rutaForm">
+<div class="form-row">
+
+    <div class="form-group mb-3">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre" placeholder="Ingrese nombre de la Ruta">
+    </div>
+    <!-- <div class="form-group mb-3">
+        <label for="origen">Provincia</label>
+        <select name="" id="">
+            <option value="">Buenos Aires</option>
+            <option value="">Capital</option>
+            
+        </select>
+    </div> -->
+    <div class="form-group mb-3">
+        <label for="origen">Ciudad de Origen</label>
+        <select name="" id="origen" formControlName="origen">
+            @for (item of lista; track $index) {
+                <option [value]="item">{{ item }} </option>
+            }
+        </select>
+    </div>
+    <div class="form-group mb-3">
+        <label for="destino">Ciudad Destino</label>
+        <select name="" id="destino" formControlName="destino">
+            @for (item of lista; track $index) {
+                <option [value]="item">{{ item }} </option>
+            }
+        </select>
+    </div>
+    <div class="form-group mb-3">
+        <label for="distanciaKm">Km totales:</label>
+        <input type="text" class="form-control" id="distanciaKm" name="distanciaKm" formControlName="distanciaKm">
+    </div>
+
+
+    <div>
+        <label for="conductor">Conductor:</label>
+        <select id="conductor" (change)="seleccionarConductor($event)">
+          <option value="" disabled selected>Seleccione un conductor</option>
+          <option *ngFor="let conductor of conductores" [value]="conductor.apellido + ' ' + conductor.nombre">
+            {{ conductor.apellido }}, {{ conductor.nombre }}
+          </option>
+        </select>
+      </div>
+
+    <button class="btn btn-success" (click)="agregarRuta()" [disabled]="!rutaForm.valid" >Guardar Ruta</button>
+</div>
+
+</form>
