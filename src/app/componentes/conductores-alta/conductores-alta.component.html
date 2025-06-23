@@ -6,25 +6,42 @@
     <div class="form-group mb-3">
       <label for="nombre">Nombre:</label>
       <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre" placeholder="Ingrese nombre del conductor">
+      @if(conductorForm.get('nombre')?.errors?.['required'] && conductorForm.get('nombre')?.touched){
+        <div class="text-danger">Debe ingresar el nombre.</div>}
     </div>
+
     <div class="form-group mb-3">
       <label for="apellido">Apellido:</label>
       <input type="text" class="form-control" id="apellido" name="apellido" formControlName="apellido" placeholder="Ingrese apellido del conductor">
+      @if(conductorForm.get('apellido')?.errors?.['required'] && conductorForm.get('apellido')?.touched){
+        <div class="text-danger">Debe ingresar el apellido.</div>}
     </div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="registro">DNI:</label>
-    <input type="number" class="form-control" id="DNI" name="DNI" formControlName="DNI" placeholder="Ingrese número de documento">
-  </div>
-  <div class="form-group mb-3">
-    <label for="registro">Número de Registro:</label>
-    <input type="number" class="form-control" id="registro" name="registro" formControlName="numeroRegistro" placeholder="Ingrese número de registro">
-  </div>
-  <div class="form-group mb-3">
-    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-    <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" >
-  </div>
 
-  <button class="btn btn-success" (click)="agregarConductor()" [disabled]="!conductorForm.valid" >Guardar conductor</button>
+    <div class="form-group mb-3">
+      <label for="DNI">DNI:</label>
+      <input type="number" class="form-control" id="DNI" name="DNI" formControlName="DNI" placeholder="Ingrese número de documento">
+      @if(conductorForm.get('DNI')?.errors?.['required'] && conductorForm.get('DNI')?.touched){
+        <div class="text-danger">Debe ingresar el DNI.</div>}
+      @if(conductorForm.get('DNI')?.errors?.['min'] && conductorForm.get('DNI')?.touched){
+        <div class="text-danger">El DNI debe ser tener al menos 7 números.</div>}
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="registro">Número de Registro:</label>
+      <input type="number" class="form-control" id="registro" name="registro" formControlName="numeroRegistro" placeholder="Ingrese número de registro">
+      @if(conductorForm.get('registro')?.errors?.['required'] && conductorForm.get('registro')?.touched){
+        <div class="text-danger">Debe ingresar el número de registro.</div>}
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+      <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" >
+      @if(conductorForm.get('fechaNacimiento')?.errors?.['required'] && conductorForm.get('fechaNacimiento')?.touched){
+        <div class="text-danger">Debe ingresar la fecha de nacimiento.</div>}
+    </div>
+    
+    <button class="btn btn-success" (click)="agregarConductor()" [disabled]="!conductorForm.valid" >Guardar conductor</button>
+
+  </div>
 </form>
 

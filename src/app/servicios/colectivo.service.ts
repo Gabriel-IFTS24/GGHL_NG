@@ -60,7 +60,7 @@ export class ColectivoService {
 
   public borrarColectivo(id: number): void {
     let colectivosActuales = this.obtenerColectivos();
-    colectivosActuales = colectivosActuales.filter((c) => c.id !== id); 
+    colectivosActuales = colectivosActuales.filter((c) => c.id != id); 
     this.guardarColectivosEnLocalStorage(colectivosActuales); 
   }
 

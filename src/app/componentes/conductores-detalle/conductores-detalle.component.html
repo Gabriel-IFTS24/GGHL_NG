@@ -5,26 +5,38 @@
     <div class="mb-3">
     <label for="nombre" class="form-label">Nombre</label>
     <input type="text" class="form-control" id="nombre" formControlName="nombre">
+    @if(conductorForm.get('nombre')?.errors?.['required'] && conductorForm.get('nombre')?.touched){
+        <div class="text-danger">Debe ingresar el nombre.</div>}
     </div>
     
     <div class="mb-3">
     <label for="apellido" class="form-label">Apellido</label>
     <input type="text" class="form-control" id="apellido" formControlName="apellido">
+    @if(conductorForm.get('apellido')?.errors?.['required'] && conductorForm.get('apellido')?.touched){
+        <div class="text-danger">Debe ingresar el apellido.</div>}
     </div>
 
     <div class="mb-3">
-        <label for="DNI" class="form-label">DNI</label>
-        <input type="number" class="form-control" id="DNI" formControlName="DNI">
-        </div>
+    <label for="DNI" class="form-label">DNI</label>
+    <input type="number" class="form-control" id="DNI" formControlName="DNI">
+    @if(conductorForm.get('DNI')?.errors?.['required'] && conductorForm.get('DNI')?.touched){
+        <div class="text-danger">Debe ingresar el DNI.</div>}
+        @if(conductorForm.get('DNI')?.errors?.['min'] && conductorForm.get('DNI')?.touched){
+        <div class="text-danger">El DNI debe ser tener al menos 7 números.</div>}
+    </div>
     
     <div class="mb-3">
     <label for="registro" class="form-label">Nº de Registro</label>
     <input type="number" class="form-control" id="numeroRegistro" formControlName="numeroRegistro">
+    @if(conductorForm.get('registro')?.errors?.['required'] && conductorForm.get('registro')?.touched){
+        <div class="text-danger">Debe ingresar el número de registro.</div>}
     </div>
 
     <div class="mb-3">
     <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
     <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento">
+    @if(conductorForm.get('fechaNacimiento')?.errors?.['required'] && conductorForm.get('fechaNacimiento')?.touched){
+        <div class="text-danger">Debe ingresar la fecha de nacimiento.</div>}
     </div>
 
     <button class="btn btn-success" (click)="guardarConductor()" [disabled]="!conductorForm.valid" >Guardar conductor</button>

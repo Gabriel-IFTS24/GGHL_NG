@@ -16,11 +16,11 @@ export class ConductoresAltaComponent {
      private router: Router) { }
      
   public conductorForm = new FormGroup({
-    apellido: new FormControl(''),
-    nombre: new FormControl(''),
-    DNI: new FormControl(0),
-    numeroRegistro: new FormControl(0),
-    fechaNacimiento: new FormControl(''),
+    apellido: new FormControl('', Validators.required),
+    nombre: new FormControl('', Validators.required),
+    DNI: new FormControl(0, [Validators.required, Validators.min(1000000)]),
+    numeroRegistro: new FormControl(0, Validators.required),
+    fechaNacimiento: new FormControl('', Validators.required),
   })
 
   agregarConductor(){
