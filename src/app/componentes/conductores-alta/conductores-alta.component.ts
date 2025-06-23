@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, MaxLengthValidator, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Conductor } from '../../modelos/conductor';
 import { ConductorService } from '../../servicios/conductor.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-conductores-alta',
@@ -11,6 +12,9 @@ import { ConductorService } from '../../servicios/conductor.service';
 })
 export class ConductoresAltaComponent {
 
+  constructor(private conductorService: ConductorService,
+     private router: Router) { }
+     
   public conductorForm = new FormGroup({
     apellido: new FormControl(''),
     nombre: new FormControl(''),
@@ -18,8 +22,6 @@ export class ConductoresAltaComponent {
     numeroRegistro: new FormControl(0),
     fechaNacimiento: new FormControl(''),
   })
-
-  constructor(private conductorService: ConductorService) { }
 
   agregarConductor(){
     const nuevoConductor: Conductor ={
@@ -32,7 +34,8 @@ export class ConductoresAltaComponent {
     };
 
     this.conductorService.guardarConductor(nuevoConductor);
-    this.conductorForm.reset();
+    
+    this.router.navigate(['conductores-gestion']);
     
   };
 }

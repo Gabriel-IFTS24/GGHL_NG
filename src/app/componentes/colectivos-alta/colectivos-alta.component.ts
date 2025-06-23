@@ -3,6 +3,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Colectivo } from '../../modelos/colectivo';
 import { ColectivoService } from '../../servicios/colectivo.service';
 import { CommonModule } from '@angular/common';
+import { ConductorService } from '../../servicios/conductor.service';
+import { Conductor } from '../../modelos/conductor';
 
 @Component({
   selector: 'app-colectivos-alta',
@@ -12,20 +14,28 @@ import { CommonModule } from '@angular/common';
   styleUrl: './colectivos-alta.component.css',
 })
 export class ColectivosAltaComponent implements OnInit {
+  
+  constructor(private colectivoService: ColectivoService, 
+    private conductorService: ConductorService) { }
+
+  // Para el combobox del conductor
+  conductores: Conductor[] = [];
+  conductorSeleccionado: string = '';
+
+  ngOnInit(): void {
+    this.conductores = this.conductorService.obtenerConductores();
+  }
+
   public colectivoForm = new FormGroup({
     patente: new FormControl<string>('', Validators.required),
     modelo: new FormControl<string>('', Validators.required),
     anioFabricacion: new FormControl<number | null>(null, [Validators.required, Validators.min(1950), Validators.max(new Date().getFullYear())]),
     capacidadPasajeros: new FormControl<number | null>(null, [Validators.required, Validators.min(1)]),
+    conductor: new FormControl(''),
   });
 
   currentYear: number = new Date().getFullYear();
 
-  constructor(private colectivoService: ColectivoService) { }
-
-  ngOnInit(): void {
-  
-  }
 
   agregarColectivo(): void {
     if (this.colectivoForm.valid) {
@@ -34,7 +44,8 @@ export class ColectivosAltaComponent implements OnInit {
         this.colectivoForm.value.patente ?? '',
         this.colectivoForm.value.modelo ?? '',
         Number(this.colectivoForm.value.anioFabricacion), 
-        Number(this.colectivoForm.value.capacidadPasajeros) 
+        Number(this.colectivoForm.value.capacidadPasajeros),
+        this.colectivoForm.value.conductor ?? '',
       );
 
      
@@ -53,5 +64,10 @@ export class ColectivosAltaComponent implements OnInit {
       this.colectivoForm.markAllAsTouched();
       console.log('Formulario inválido. Revise los campos.');
     }
+  }
+
+  seleccionarConductor(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    this.conductorSeleccionado = selectElement.value;
   }
 }

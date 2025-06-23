@@ -9,6 +9,7 @@
         <div *ngIf="colectivoForm.get('patente')?.errors?.['required']">La patente es requerida.</div>
       </div>
     </div>
+
     <div class="form-group mb-3">
       <label for="modelo">Modelo:</label>
       <input type="text" class="form-control" id="modelo" name="modelo" formControlName="modelo" placeholder="Ej: Mercedes Benz Citaro">
@@ -17,6 +18,18 @@
       </div>
     </div>
   </div>
+
+  <div class="form-group mb-3">
+    <label for="conductor">Conductor:</label>
+    <select class="form-select" id="conductor" name="conductor" formControlName="conductor" (change)="seleccionarConductor($event)">
+      <option value="" disabled selected>Seleccione un conductor</option>
+      @for (conductor of conductores; track conductor.id){
+      <option [value]="conductor.apellido + ' ' + conductor.nombre">
+        {{ conductor.apellido }}, {{ conductor.nombre }}
+      </option>}
+    </select>
+  </div>
+
   <div class="form-group mb-3">
     <label for="anioFabricacion">Año de Fabricación:</label>
     <input type="number" class="form-control" id="anioFabricacion" name="anioFabricacion" formControlName="anioFabricacion" placeholder="Ej: 2020">
@@ -25,6 +38,7 @@
       <div *ngIf="colectivoForm.get('anioFabricacion')?.errors?.['min'] || colectivoForm.get('anioFabricacion')?.errors?.['max']">El año debe ser un valor válido (ej: 1950-{{ currentYear }}).</div>
     </div>
   </div>
+
   <div class="form-group mb-3">
     <label for="capacidadPasajeros">Capacidad de Pasajeros:</label>
     <input type="number" class="form-control" id="capacidadPasajeros" name="capacidadPasajeros" formControlName="capacidadPasajeros" placeholder="Ej: 50">

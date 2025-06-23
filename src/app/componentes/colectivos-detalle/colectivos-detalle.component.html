@@ -11,6 +11,17 @@
     <input type="text" class="form-control" id="modelo" formControlName="modelo">
     </div>
 
+    <div class="form-group mb-3">
+        <label for="conductor">Conductor:</label>
+        <select class="form-select" id="conductor" name="conductor" formControlName="conductor" (change)="seleccionarConductor($event)">
+          <option value="" disabled selected>Seleccione un conductor</option>
+          @for (conductor of conductores; track conductor.id){
+          <option [value]="conductor.apellido + ' ' + conductor.nombre">
+            {{ conductor.apellido }}, {{ conductor.nombre }}
+          </option>}
+        </select>
+      </div>
+
     <div class="mb-3">
     <label for="anioFabricacion" class="form-label">Año de fabricación</label>
     <input type="number" class="form-control" id="anioFabricacion" formControlName="anioFabricacion">
@@ -21,6 +32,7 @@
     <input type="number" class="form-control" id="capacidadPasajeros" formControlName="capacidadPasajeros">
     </div>
 
-    <button class="btn btn-success" (click)="guardarColectivo()" [disabled]="!colectivoForm.valid" >Guardar conductor</button>
+
+    <button class="btn btn-success" (click)="guardarColectivo()" [disabled]="!colectivoForm.valid" >Guardar colectivo</button>
 </form>
 

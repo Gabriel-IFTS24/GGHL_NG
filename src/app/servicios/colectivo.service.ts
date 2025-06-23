@@ -12,16 +12,19 @@ export class ColectivoService {
   constructor() {
     this.colectivos = this.obtenerColectivos() || []; // Carga inicial de colectivos
 
-    if (this.colectivos.length === 0) {
-      this.nuevoId = 1; 
-    } else {
-      let maxId = 0;
-      this.colectivos.forEach(colectivo => {
-        if (colectivo.id && colectivo.id > maxId) {
-          maxId = colectivo.id;
-        }
-      });
-      this.nuevoId = maxId + 1;
+    this.guardarColectivosEnLocalStorage(this.colectivos)
+
+    if(this.colectivos.length == 0){
+      this.nuevoId = 0
+    }
+    else{
+      let ultColectivo = this.colectivos[this.colectivos.length - 1];
+
+      if(ultColectivo && ultColectivo.id !== undefined){
+      this.nuevoId = ultColectivo.id + 1;}
+        console.log('ultColectivo: ', ultColectivo)
+        console.log('this.colectivos.length: ', this.colectivos.length)
+        console.log('this.nuevoId: ', this.nuevoId)
     }
   }
 
@@ -30,13 +33,13 @@ export class ColectivoService {
 
 
     return localStorageColectivos == null ? [
-      new Colectivo('ABC 123', 'Mercedes Benz Citaro', 2018, 50, 1),
-      new Colectivo('XYZ 456', 'Scania K310', 2020, 45, 2),
-      new Colectivo('DEF 789', 'Volvo B8RLE', 2017, 60, 3),
-      new Colectivo('GHI 012', 'Agrale MT 17.0 LE', 2019, 48, 4),
-      new Colectivo('JKL 345', 'IVECO Bus Cityclass', 2021, 55, 5),
+      new Colectivo('ABC 123', 'Mercedes Benz Citaro', 2018, 50, 'González Martín', 1),
+      new Colectivo('XYZ 456', 'Scania K310', 2020, 45, 'Rodríguez Laura', 2),
+      new Colectivo('DEF 789', 'Volvo B8RLE', 2017, 60, 'Fernández Pablo', 3),
+      new Colectivo('GHI 012', 'Agrale MT 17.0 LE', 2019, 48, 'López Camila', 4),
+      new Colectivo('JKL 345', 'IVECO Bus Cityclass', 2021, 55, 'Martínez Javier', 5),
     ] : JSON.parse(localStorageColectivos).map((item: any) =>
-      new Colectivo(item.patente, item.modelo, item.anioFabricacion, item.capacidadPasajeros, item.id)
+      new Colectivo(item.patente, item.modelo, item.anioFabricacion, item.capacidadPasajeros, item.conductor, item.id)
     );
   }
 
