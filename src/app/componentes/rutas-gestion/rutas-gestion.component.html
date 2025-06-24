@@ -10,8 +10,8 @@
         <th scope="col">Ciudad Origen</th>
         <th scope="col">Ciudad Destino</th>
         <th scope="col">Distancia total (km)</th>
-        <th scope="col">Conductor</th>
-        <th scope="col">Autobus</th>
+        <th scope="col">Autobus - Conductor</th>
+        <!-- <th scope="col">Conductor</th> -->
         <th scope="col"></th>
     </tr>
   </thead>
@@ -19,14 +19,15 @@
   <!-- Dejo el elemento que se llena con el script -->
   <tbody id="tbody">
     @for (ruta of rutas; track ruta.id){
+      
         <tr>
             <th scope="row">{{ ruta.id }}</th>
             <td>{{ ruta.nombre }} </td>
             <td>{{ ruta.origen }} </td>
             <td>{{ ruta.destino }} </td>
             <td>{{ ruta.distanciaKm }} </td>
-            <td> Conductor  </td>
-            <td> Autobus  </td>
+            <td>{{ ruta.colectivo }}  </td>
+            <!-- <td> conductor  </td> -->
             <td>
                 <!-- <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/conductores-detalle',conductor.id]">Modificar</button> -->
                 <button class="btn btn-danger btn-sm ms-2" (click)="borrarRuta(ruta.id)">Eliminar</button>

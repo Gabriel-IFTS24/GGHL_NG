@@ -40,13 +40,18 @@
 
 
     <div class="form-group mb-3">
-        <label for="conductor">Conductor:</label>
-        <select id="conductor" (change)="seleccionarConductor($event)">
+        <label for="conductor">Colectivo - Conductor:</label>
+        <!-- <select id="conductor" (change)="seleccionarConductor($event)">
             <option value="" disabled selected>Seleccione un conductor</option>
             @for (conductor of conductores; track $index) {
                 <option [value]="conductor.apellido + ' ' + conductor.nombre">{{ conductor.apellido }}, {{ conductor.nombre }}</option>
             }
-        
+        </select> -->
+        <select id="colectivo" (change)="seleccionarColectivo($event)" class="form-control" formControlName="colectivo">
+            <option value="" disabled selected>Seleccione un colectivo</option>
+            @for (colectivo of colectivos; track $index) {
+                <option [value]="colectivo.patente + ' - ' + colectivo.conductor">{{ colectivo.patente }} - {{ colectivo.conductor}}</option>
+            }
         </select>
     </div>
 
