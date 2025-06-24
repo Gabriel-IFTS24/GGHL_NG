@@ -4,16 +4,20 @@
     <div class="mb-3">
     <label for="patente" class="form-label">Patente</label>
     <input type="text" class="form-control" id="patente" formControlName="patente">
+    @if(colectivoForm.get('patente')?.errors?.['required'] && colectivoForm.get('patente')?.touched){
+      <div class="text-danger">Debe ingresar la patente.</div>}
     </div>
     
     <div class="mb-3">
     <label for="modelo" class="form-label">Modelo</label>
     <input type="text" class="form-control" id="modelo" formControlName="modelo">
+    @if(colectivoForm.get('modelo')?.errors?.['required'] && colectivoForm.get('modelo')?.touched){
+      <div class="text-danger">Debe ingresar el modelo.</div>}
     </div>
 
     <div class="form-group mb-3">
         <label for="conductor">Conductor:</label>
-        <select class="form-select" id="conductor" name="conductor" formControlName="conductor" (change)="seleccionarConductor($event)">
+        <select class="form-select" id="conductor" name="conductor" formControlName="conductor">
           <option value="" disabled selected>Seleccione un conductor</option>
           @for (conductor of conductores; track conductor.id){
           <option [value]="conductor.apellido + ' ' + conductor.nombre">
@@ -25,11 +29,19 @@
     <div class="mb-3">
     <label for="anioFabricacion" class="form-label">Año de fabricación</label>
     <input type="number" class="form-control" id="anioFabricacion" formControlName="anioFabricacion">
+    @if(colectivoForm.get('anioFabricacion')?.errors?.['required'] && colectivoForm.get('anioFabricacion')?.touched){
+      <div class="text-danger">Debe ingresar el año de fabricación.</div>}
+    @if((colectivoForm.get('anioFabricacion')?.errors?.['max'] || colectivoForm.get('anioFabricacion')?.errors?.['min']) && colectivoForm.get('anioFabricacion')?.touched){
+        <div class="text-danger">El año debe ser un valor válido (ej: 1950-{{ currentYear }}).</div>}
     </div>
 
     <div class="mb-3">
     <label for="capacidadPasajeros" class="form-label">Capacidad de pasajeros</label>
     <input type="number" class="form-control" id="capacidadPasajeros" formControlName="capacidadPasajeros">
+    @if(colectivoForm.get('capacidadPasajeros')?.errors?.['required'] && colectivoForm.get('capacidadPasajeros')?.touched){
+      <div class="text-danger">Debe ingresar la cantidad de pasajeros.</div>}
+      @if(colectivoForm.get('capacidadPasajeros')?.errors?.['min'] && colectivoForm.get('capacidadPasajeros')?.touched){
+        <div class="text-danger">La capacidad mínima es de 1 pasajero.</div>}
     </div>
 
 

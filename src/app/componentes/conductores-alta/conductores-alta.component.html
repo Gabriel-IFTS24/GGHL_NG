@@ -27,9 +27,9 @@
     </div>
 
     <div class="form-group mb-3">
-      <label for="registro">Número de Registro:</label>
-      <input type="number" class="form-control" id="registro" name="registro" formControlName="numeroRegistro" placeholder="Ingrese número de registro">
-      @if(conductorForm.get('registro')?.errors?.['required'] && conductorForm.get('registro')?.touched){
+      <label for="numeroRegistro">Número de Registro:</label>
+      <input type="number" class="form-control" id="numeroRegistro" name="numeroRegistro" formControlName="numeroRegistro" placeholder="Ingrese número de registro">
+      @if(conductorForm.get('numeroRegistro')?.errors?.['required'] && conductorForm.get('numeroRegistro')?.touched){
         <div class="text-danger">Debe ingresar el número de registro.</div>}
     </div>
 

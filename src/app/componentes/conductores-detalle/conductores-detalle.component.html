@@ -26,7 +26,7 @@
     </div>
     
     <div class="mb-3">
-    <label for="registro" class="form-label">Nº de Registro</label>
+    <label for="numeroRegistro" class="form-label">Nº de Registro</label>
     <input type="number" class="form-control" id="numeroRegistro" formControlName="numeroRegistro">
     @if(conductorForm.get('registro')?.errors?.['required'] && conductorForm.get('registro')?.touched){
         <div class="text-danger">Debe ingresar el número de registro.</div>}

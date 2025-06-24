@@ -31,6 +31,9 @@ export class ColectivosDetalleComponent {
     conductores: Conductor[] = [];
     conductorSeleccionado: string = '';
 
+    // Para el mensaje de la validación del año de fabricación
+    currentYear: number = new Date().getFullYear();
+
   guardarColectivo(){
     const colectivoModificado: Colectivo ={
     id: this.colectivo?.id ?? 0,
@@ -47,10 +50,10 @@ export class ColectivosDetalleComponent {
     
   };
 
-  seleccionarConductor(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    this.conductorSeleccionado = selectElement.value;
-  }
+  // seleccionarConductor(event: Event): void {
+  //   const selectElement = event.target as HTMLSelectElement;
+  //   this.conductorSeleccionado = selectElement.value;
+  // }
 
   
   ngOnInit(): void {
@@ -60,11 +63,11 @@ export class ColectivosDetalleComponent {
     
     this.colectivoForm = new FormGroup({
       id: new FormControl(this.colectivo?.id),
-      patente: new FormControl(this.colectivo?.patente),
-      modelo: new FormControl(this.colectivo?.modelo),
-      anioFabricacion: new FormControl(this.colectivo?.anioFabricacion),
-      capacidadPasajeros: new FormControl(this.colectivo?.capacidadPasajeros),
-      conductor: new FormControl(this.colectivo?.conductor),
+      patente: new FormControl(this.colectivo?.patente, Validators.required),
+      modelo: new FormControl(this.colectivo?.modelo, Validators.required),
+      anioFabricacion: new FormControl(this.colectivo?.anioFabricacion, [Validators.required, Validators.min(1950), Validators.max(new Date().getFullYear())]),
+      capacidadPasajeros: new FormControl(this.colectivo?.capacidadPasajeros, [Validators.required, Validators.min(1)]),
+      conductor: new FormControl(this.colectivo?.conductor, Validators.required),
     });
   }
 

@@ -5,6 +5,7 @@ import { ColectivoService } from '../../servicios/colectivo.service';
 import { CommonModule } from '@angular/common';
 import { ConductorService } from '../../servicios/conductor.service';
 import { Conductor } from '../../modelos/conductor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-colectivos-alta',
@@ -16,12 +17,16 @@ import { Conductor } from '../../modelos/conductor';
 export class ColectivosAltaComponent implements OnInit {
   
   constructor(private colectivoService: ColectivoService, 
-    private conductorService: ConductorService) { }
+  private conductorService: ConductorService,
+  private router: Router) { }
 
   // Para el combobox del conductor
   conductores: Conductor[] = [];
   conductorSeleccionado: string = '';
 
+  // Para el mensaje de la validación del año de fabricación
+  currentYear: number = new Date().getFullYear();
+ 
   ngOnInit(): void {
     this.conductores = this.conductorService.obtenerConductores();
   }
@@ -31,10 +36,9 @@ export class ColectivosAltaComponent implements OnInit {
     modelo: new FormControl<string>('', Validators.required),
     anioFabricacion: new FormControl<number | null>(null, [Validators.required, Validators.min(1950), Validators.max(new Date().getFullYear())]),
     capacidadPasajeros: new FormControl<number | null>(null, [Validators.required, Validators.min(1)]),
-    conductor: new FormControl(''),
+    conductor: new FormControl('', Validators.required),
   });
 
-  currentYear: number = new Date().getFullYear();
 
 
   agregarColectivo(): void {
@@ -52,13 +56,8 @@ export class ColectivosAltaComponent implements OnInit {
       this.colectivoService.guardarColectivo(nuevoColectivo); 
 
       console.log('Colectivo agregado con éxito:', nuevoColectivo);
-      alert('Colectivo agregado con éxito!'); 
-      this.colectivoForm.reset(); 
-      
-      Object.keys(this.colectivoForm.controls).forEach(key => {
-        this.colectivoForm.get(key)?.markAsUntouched();
-        this.colectivoForm.get(key)?.markAsPristine();
-      });
+
+      this.router.navigate(['colectivos-gestion']);
 
     } else {
       this.colectivoForm.markAllAsTouched();
@@ -66,8 +65,8 @@ export class ColectivosAltaComponent implements OnInit {
     }
   }
 
-  seleccionarConductor(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    this.conductorSeleccionado = selectElement.value;
-  }
+  // seleccionarConductor(event: Event): void {
+  //   const selectElement = event.target as HTMLSelectElement;
+  //   this.conductorSeleccionado = selectElement.value;
+  // }
 }

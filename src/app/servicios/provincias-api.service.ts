@@ -13,9 +13,11 @@ export class ProvinciasApiService {
 
   private _httpClient = inject(HttpClient)
 
-  public obtenerProvincias():Observable<Provincia[]>{
+  public obtenerProvincias(): Observable<Provincia[]> {
     return this._httpClient.get<{ provincias: Provincia[] }>(this.url).pipe(
-      map(respuesta => respuesta.provincias)
+      map(respuesta =>
+        respuesta.provincias.sort((a, b) => a.nombre > b.nombre ? 1 : -1)
+      )
     );
   }
 
