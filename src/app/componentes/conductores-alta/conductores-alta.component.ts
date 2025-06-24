@@ -19,7 +19,7 @@ export class ConductoresAltaComponent {
     apellido: new FormControl('', Validators.required),
     nombre: new FormControl('', Validators.required),
     DNI: new FormControl(0, [Validators.required, Validators.min(1000000)]),
-    numeroRegistro: new FormControl(0, Validators.required),
+    numeroRegistro: new FormControl(0, [Validators.required, Validators.min(1)]),
     fechaNacimiento: new FormControl('', Validators.required),
   })
 

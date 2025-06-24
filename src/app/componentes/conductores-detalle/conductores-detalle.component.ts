@@ -45,7 +45,7 @@ export class ConductoresDetalleComponent  implements OnInit{
       apellido: new FormControl(this.conductor?.apellido, Validators.required),
       nombre: new FormControl(this.conductor?.nombre, Validators.required),
       DNI: new FormControl(this.conductor?.DNI, [Validators.required, Validators.min(1000000)]),
-      numeroRegistro: new FormControl(this.conductor?.numeroRegistro, Validators.required),
+      numeroRegistro: new FormControl(this.conductor?.numeroRegistro, [Validators.required, Validators.min(1)]),
       fechaNacimiento: new FormControl(this.conductor?.fechaNacimiento, Validators.required),
     });
     

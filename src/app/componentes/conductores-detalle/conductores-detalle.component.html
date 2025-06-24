@@ -28,8 +28,10 @@
     <div class="mb-3">
     <label for="numeroRegistro" class="form-label">Nº de Registro</label>
     <input type="number" class="form-control" id="numeroRegistro" formControlName="numeroRegistro">
-    @if(conductorForm.get('registro')?.errors?.['required'] && conductorForm.get('registro')?.touched){
+    @if(conductorForm.get('numeroRegistro')?.errors?.['required'] && conductorForm.get('numeroRegistro')?.touched){
         <div class="text-danger">Debe ingresar el número de registro.</div>}
+        @if(conductorForm.get('numeroRegistro')?.errors?.['min'] && conductorForm.get('numeroRegistro')?.touched){
+            <div class="text-danger">El número de registro debe ser mayor a 1.</div>}
     </div>
 
     <div class="mb-3">

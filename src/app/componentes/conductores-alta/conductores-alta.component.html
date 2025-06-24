@@ -31,6 +31,8 @@
       <input type="number" class="form-control" id="numeroRegistro" name="numeroRegistro" formControlName="numeroRegistro" placeholder="Ingrese número de registro">
       @if(conductorForm.get('numeroRegistro')?.errors?.['required'] && conductorForm.get('numeroRegistro')?.touched){
         <div class="text-danger">Debe ingresar el número de registro.</div>}
+        @if(conductorForm.get('numeroRegistro')?.errors?.['min'] && conductorForm.get('numeroRegistro')?.touched){
+            <div class="text-danger">El número de registro debe ser mayor a 1.</div>}
     </div>
 
     <div class="form-group mb-3">
