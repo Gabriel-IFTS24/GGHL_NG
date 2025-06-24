@@ -5,9 +5,12 @@ import { Ruta } from '../../modelos/ruta';
 import { RutaService } from '../../servicios/ruta.service';
 
 // Esto hay que cambiarlo a colectivos
-import { ConductorService } from '../../servicios/conductor.service';
-import { Conductor } from '../../modelos/conductor';
+// import { ConductorService } from '../../servicios/conductor.service';
+// import { Conductor } from '../../modelos/conductor';
 
+// prueba de colectivo
+import { ColectivoService } from '../../servicios/colectivo.service';
+import { Colectivo } from '../../modelos/colectivo';
 @Component({
   selector: 'app-rutas-alta',
   imports: [ReactiveFormsModule, CommonModule],
@@ -55,24 +58,35 @@ export class RutasAltaComponent implements OnInit{
     origen: new FormControl('', Validators.required),
     destino: new FormControl('', Validators.required),
     distanciaKm: new FormControl(0, [Validators.required, Validators.min(1)]),
+    colectivo: new FormControl('', Validators.required)
   })
 
   // Esto hay que cambiarlo a colectivos
-  constructor(private rutaService: RutaService,  private conductorService: ConductorService){ }
+  // constructor(private rutaService: RutaService,  private conductorService: ConductorService){ }
+  constructor(private rutaService: RutaService,  private colectivoService: ColectivoService){ }
 
   // Esto hay que cambiarlo a colectivos
-  conductores: Conductor[] = [];
-  conductorSeleccionado: string = '';
+  // conductores: Conductor[] = [];
+  // conductorSeleccionado: string = '';
+  colectivos: Colectivo[] = [];
+  colectivoSeleccionado: string = '';
 
   // Esto hay que cambiarlo a colectivos
   ngOnInit(): void {
-    this.conductores = this.conductorService.obtenerConductores();
+    // this.conductores = this.conductorService.obtenerConductores();
+    this.colectivos = this.colectivoService.obtenerColectivos();
   }
 
     // Esto hay que cambiarlo a colectivos
-    seleccionarConductor(event: Event): void {
+    // seleccionarConductor(event: Event): void {
+    //   const selectElement = event.target as HTMLSelectElement;
+    //   this.conductorSeleccionado = selectElement.value;
+      
+    // }
+    seleccionarColectivo(event: Event): void {
       const selectElement = event.target as HTMLSelectElement;
-      this.conductorSeleccionado = selectElement.value;
+      this.colectivoSeleccionado = selectElement.value;
+      
     }
 
   agregarRuta(): void {
@@ -82,7 +96,8 @@ export class RutasAltaComponent implements OnInit{
         nombre: this.rutaForm.value.nombre ?? '',
         origen: this.rutaForm.value.origen ?? '',
         destino: this.rutaForm.value.destino ?? '',
-        distanciaKm: this.rutaForm.value.distanciaKm ?? 0
+        distanciaKm: this.rutaForm.value.distanciaKm ?? 0,
+        colectivo: this.rutaForm.value.colectivo ?? '',
       }
 
       this.rutaService.guardarRuta(nuevaRuta);

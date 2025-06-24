@@ -41,12 +41,20 @@ export class RutaService {
   public obtenerRutas(): Ruta[] {
     let localStorageRutas = localStorage.getItem('rutas');
 
+    // return localStorageRutas == null ? [
+    //   { id: 1, origen: "Buenos Aires", destino: "Córdoba", distanciaKm: 700 },
+    //   { id: 2, origen: "Córdoba", destino: "Mendoza", distanciaKm: 500},
+    //   { id: 3, origen: "Mendoza", destino: "Santiago", distanciaKm: 360},
+    //   { id: 4, origen: "Buenos Aires", destino: "Rosario", distanciaKm: 300},
+    //   { id: 5, origen: "Rosario", destino: "Santa Fe", distanciaKm: 170}
+    // ] : JSON.parse(localStorageRutas);
+
     return localStorageRutas == null ? [
-      { id: 1, origen: "Buenos Aires", destino: "Córdoba", distanciaKm: 700 },
-      { id: 2, origen: "Córdoba", destino: "Mendoza", distanciaKm: 500},
-      { id: 3, origen: "Mendoza", destino: "Santiago", distanciaKm: 360},
-      { id: 4, origen: "Buenos Aires", destino: "Rosario", distanciaKm: 300},
-      { id: 5, origen: "Rosario", destino: "Santa Fe", distanciaKm: 170}
+      { id: 1, nombre: "Ruta de la Costa", origen: "Mar del Plata", destino: "Villa Gesell", distanciaKm: 100, colectivo: "PQR 678 - Gómez Núñez" },
+      { id: 2, nombre: "Ruta Andina", origen: "Córdoba", destino: "Mendoza", distanciaKm: 500, colectivo: "DEF 456 - Pérez Rodríguez" },
+      { id: 3, nombre: "Paso de los Andes", origen: "Mendoza", destino: "Santiago", distanciaKm: 360, colectivo: "GHI 789 - Fernández López" },
+      { id: 4, nombre: "Ruta Pampeana", origen: "Buenos Aires", destino: "Rosario", distanciaKm: 300, colectivo: "JKL 012 - García Sánchez" },
+      { id: 5, nombre: "Litoral Express", origen: "Rosario", destino: "Santa Fe", distanciaKm: 170, colectivo: "MNO 345 - Díaz Martínez" }
     ] : JSON.parse(localStorageRutas);
   }
 
