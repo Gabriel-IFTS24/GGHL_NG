@@ -29,8 +29,8 @@
             <td>{{ ruta.colectivo }}  </td>
             <!-- <td> conductor  </td> -->
             <td>
-                <!-- <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/conductores-detalle',conductor.id]">Modificar</button> -->
-                <button class="btn btn-danger btn-sm ms-2" (click)="borrarRuta(ruta.id)">Eliminar</button>
+              <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/rutas-detalle',ruta.id]">Modificar</button>
+              <button class="btn btn-danger btn-sm ms-2" (click)="borrarRuta(ruta.id)">Eliminar</button>
             </td>
         </tr>
     }

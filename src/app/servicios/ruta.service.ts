@@ -14,29 +14,29 @@ export class RutaService {
 
     this.guardarTodasLasRutas(this.rutas)
 
-    this.inicializarNuevoId()
-    // if( this.rutas.length === 0){
-    //   this.nuevoId = 1;
-    // }else{
-    //   const ultimaRuta = this.rutas[this.rutas.length - 1];
+    // this.inicializarNuevoId()
+    if( this.rutas.length == 0){
+      this.nuevoId = 1;
+    }else{
+      const ultimaRuta = this.rutas[this.rutas.length - 1];
       
-    //   if(ultimaRuta && ultimaRuta.id !== undefined) {
-    //     this.nuevoId = ultimaRuta.id + 1;
-    //     console.log("nueva ruta", ultimaRuta)
-    //   } else {
-    //     this.nuevoId = 1;
-    //   }
-    // }
+      if(ultimaRuta && ultimaRuta.id !== undefined) {
+        this.nuevoId = ultimaRuta.id + 1;
+        console.log("nueva ruta", ultimaRuta)
+      } else {
+        this.nuevoId = 1;
+      }
+    }
 
   }
-  private inicializarNuevoId(): void{
-    const rutasExistentes = this.obtenerRutas();
-    if(rutasExistentes.length > 0){
-      this.nuevoId = Math.max(...rutasExistentes.map(r => r.id || 0)) + 1;
-    } else{
-      this.nuevoId = 1;
-    }
-  }
+  // private inicializarNuevoId(): void{
+  //   const rutasExistentes = this.obtenerRutas();
+  //   if(rutasExistentes.length > 0){
+  //     this.nuevoId = Math.max(...rutasExistentes.map(r => r.id || 0)) + 1;
+  //   } else{
+  //     this.nuevoId = 1;
+  //   }
+  // }
 
   public obtenerRutas(): Ruta[] {
     let localStorageRutas = localStorage.getItem('rutas');
@@ -50,12 +50,13 @@ export class RutaService {
     // ] : JSON.parse(localStorageRutas);
 
     return localStorageRutas == null ? [
-      { id: 1, nombre: "Ruta de la Costa", origen: "Mar del Plata", destino: "Villa Gesell", distanciaKm: 100, colectivo: "PQR 678 - Gómez Núñez" },
-      { id: 2, nombre: "Ruta Andina", origen: "Córdoba", destino: "Mendoza", distanciaKm: 500, colectivo: "DEF 456 - Pérez Rodríguez" },
-      { id: 3, nombre: "Paso de los Andes", origen: "Mendoza", destino: "Santiago", distanciaKm: 360, colectivo: "GHI 789 - Fernández López" },
-      { id: 4, nombre: "Ruta Pampeana", origen: "Buenos Aires", destino: "Rosario", distanciaKm: 300, colectivo: "JKL 012 - García Sánchez" },
-      { id: 5, nombre: "Litoral Express", origen: "Rosario", destino: "Santa Fe", distanciaKm: 170, colectivo: "MNO 345 - Díaz Martínez" }
+      { id: 1, nombre: "Ruta Atlántica", origen: "Buenos Aires (CABA)", destino: "Mar del Plata", distanciaKm: 415, colectivo: "ABC 123 - González Martín" },
+      { id: 2, nombre: "Ruta de los Lagos", origen: "Bariloche", destino: "San Martín de los Andes", distanciaKm: 190, colectivo: "XYZ 456 - Rodríguez Laura" },
+      { id: 3, nombre: "Ruta Andina", origen: "Mendoza", destino: "Salta", distanciaKm: 1250, colectivo: "DEF 789 - Fernández Pablo" },
+      { id: 4, nombre: "Ruta Patagónica", origen: "El Calafate", destino: "Ushuaia", distanciaKm: 860, colectivo: "GHI 012 - López Camila" },
+      { id: 5, nombre: "Ruta del Norte", origen: "Salta", destino: "Puerto Iguazú", distanciaKm: 1480, colectivo: "JKL 345 - Martínez Javier" },
     ] : JSON.parse(localStorageRutas);
+    
   }
 
   public guardarRuta( ruta: Ruta): void {

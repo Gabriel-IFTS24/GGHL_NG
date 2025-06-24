@@ -1,4 +1,4 @@
-<h4>Alta de Rutas</h4>
+<h4>Gestión de Rutas</h4>
 
 <form [formGroup]="rutaForm">
 <div class="form-row">
@@ -6,8 +6,6 @@
     <div class="form-group mb-3">
         <label for="nombre">Nombre:</label>
         <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre" placeholder="Ingrese nombre de la Ruta">
-        @if(rutaForm.get('nombre')?.errors?.['required'] && rutaForm.get('nombre')?.touched){
-            <div class="text-danger">Debe ingresar el nombre.</div>}
     </div>
     <!-- <div class="form-group mb-3">
         <label for="origen">Provincia</label>
@@ -25,10 +23,7 @@
                 <option [value]="item">{{ item }} </option>
             }
         </select>
-        @if(rutaForm.get('origen')?.errors?.['required'] && rutaForm.get('origen')?.touched){
-            <div class="text-danger">Debe seleccionar un origen.</div>}
     </div>
-
     <div class="form-group mb-3">
         <label for="destino">Ciudad Destino:</label>
         <select name="" id="destino" formControlName="destino" class="form-select">
@@ -37,17 +32,10 @@
                 <option [value]="item">{{ item }} </option>
             }
         </select>
-        @if(rutaForm.get('destino')?.errors?.['required'] && rutaForm.get('destino')?.touched){
-            <div class="text-danger">Debe seleccionar un destino.</div>}
     </div>
-
     <div class="form-group mb-3">
         <label for="distanciaKm">Km totales:</label>
         <input type="number" class="form-control" id="distanciaKm" name="distanciaKm" formControlName="distanciaKm">
-        @if(rutaForm.get('distanciaKm')?.errors?.['required'] && rutaForm.get('distanciaKm')?.touched){
-            <div class="text-danger">Debe ingresar la distancia.</div>}
-          @if(rutaForm.get('distanciaKm')?.errors?.['min'] && rutaForm.get('distanciaKm')?.touched){
-              <div class="text-danger">La capacidad mínima es 1 KM.</div>}
     </div>
 
 
@@ -59,14 +47,12 @@
                 <option [value]="conductor.apellido + ' ' + conductor.nombre">{{ conductor.apellido }}, {{ conductor.nombre }}</option>
             }
         </select> -->
-        <select id="colectivo" (change)="seleccionarColectivo($event)" class="form-control" formControlName="colectivo" class="form-select">
+        <select id="colectivo" class="form-control" formControlName="colectivo" class="form-select">
             <option value="" disabled selected>Seleccione un colectivo</option>
             @for (colectivo of colectivos; track $index) {
                 <option [value]="colectivo.patente + ' - ' + colectivo.conductor">{{ colectivo.patente }} - {{ colectivo.conductor}}</option>
             }
         </select>
-        @if(rutaForm.get('colectivo')?.errors?.['required'] && rutaForm.get('colectivo')?.touched){
-            <div class="text-danger">Debe seleccionar un colectivo.</div>}
     </div>
 
     <button class="btn btn-success" (click)="agregarRuta()" [disabled]="!rutaForm.valid" >Guardar Ruta</button>

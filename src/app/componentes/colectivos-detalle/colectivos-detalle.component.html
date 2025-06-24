@@ -24,6 +24,8 @@
             {{ conductor.apellido }}, {{ conductor.nombre }}
           </option>}
         </select>
+        @if(colectivoForm.get('conductor')?.errors?.['required'] && colectivoForm.get('conductor')?.touched){
+          <div class="text-danger">Debe seleccionar un conductor.</div>}
       </div>
 
     <div class="mb-3">
@@ -40,7 +42,7 @@
     <input type="number" class="form-control" id="capacidadPasajeros" formControlName="capacidadPasajeros">
     @if(colectivoForm.get('capacidadPasajeros')?.errors?.['required'] && colectivoForm.get('capacidadPasajeros')?.touched){
       <div class="text-danger">Debe ingresar la cantidad de pasajeros.</div>}
-      @if(colectivoForm.get('capacidadPasajeros')?.errors?.['min'] && colectivoForm.get('capacidadPasajeros')?.touched){
+    @if(colectivoForm.get('capacidadPasajeros')?.errors?.['min'] && colectivoForm.get('capacidadPasajeros')?.touched){
         <div class="text-danger">La capacidad mínima es de 1 pasajero.</div>}
     </div>
 

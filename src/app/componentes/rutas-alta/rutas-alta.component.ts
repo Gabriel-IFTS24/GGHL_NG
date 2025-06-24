@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms'
 import { Ruta } from '../../modelos/ruta';
 import { RutaService } from '../../servicios/ruta.service';
+import { Router } from '@angular/router';
 
 // Esto hay que cambiarlo a colectivos
 // import { ConductorService } from '../../servicios/conductor.service';
@@ -21,36 +22,15 @@ export class RutasAltaComponent implements OnInit{
 
   lista = [
     'Buenos Aires (CABA)',
-    'La Plata',
     'Mar del Plata',
-    'Bahía Blanca',
-    'Tandil',
-    'Olavarría',
-    'Junín',
-    'Pergamino',
-    'San Nicolás de los Arroyos',
-    'Luján',
-    'Necochea',
-    'Zárate',
-    'Campana',
-    'Pinamar',
-    'Villa Gesell',
-    'Chivilcoy',
-    'Mercedes',
-    'Azul',
-    'Tres Arroyos',
-    'Balcarce',
-    'Morón',
-    'Avellaneda',
-    'Lanús',
-    'Quilmes',
-    'San Isidro',
-    'Tigre',
-    'San Fernando',
-    'Lomas de Zamora',
-    'Florencio Varela',
-    'Berazategui',
-    'La Matanza'
+    'Puerto Iguazú',
+    'Bariloche',
+    'Mendoza',
+    'Salta',
+    'El Calafate',
+    'Villa Carlos Paz',
+    'San Martín de los Andes',
+    'Ushuaia'
   ];
 
   public rutaForm = new FormGroup({
@@ -63,7 +43,9 @@ export class RutasAltaComponent implements OnInit{
 
   // Esto hay que cambiarlo a colectivos
   // constructor(private rutaService: RutaService,  private conductorService: ConductorService){ }
-  constructor(private rutaService: RutaService,  private colectivoService: ColectivoService){ }
+  constructor(private rutaService: RutaService,
+  private colectivoService: ColectivoService,
+  private router: Router){ }
 
   // Esto hay que cambiarlo a colectivos
   // conductores: Conductor[] = [];
@@ -104,8 +86,7 @@ export class RutasAltaComponent implements OnInit{
 
       console.log(this.rutaForm.value)
       
-      this.rutaForm.reset();
-      alert('Ruta agregada con exito!');
+      this.router.navigate(['rutas-gestion']);
       
     } else {
       alert('Por favor, complete todos los campos correctamente.');
